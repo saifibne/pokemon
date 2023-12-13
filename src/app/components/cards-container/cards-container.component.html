@@ -1,0 +1,34 @@
+<div class="searchbox">
+    <input type="text" placeholder="Search your pokemon" (keypress)="onEnter($event)" #inputText>
+    <div class="search-icon" (click)="onSearch(inputText.value)">
+        <img src="assets/search_icon.svg" alt="">
+    </div>
+</div>
+<div *ngIf="pokeCards && pokeCards.length > 0; else noItem">
+    <!-- Grid for all the pokemon cards -->
+    <div class="cards-container">
+        <app-single-card *ngFor="let item of pokeCards" [pokeData]="item"></app-single-card>
+    </div>
+
+    <!-- Pagination for the page -->
+    <div class="pagination">
+        <button class="pagination-item" [disabled]="!prevPageUrl" (click)="goToPrevPage()">
+            <span *ngIf="!prevLoading; else prevLoader">
+                < Prev</span>
+                    <ng-template #prevLoader>
+                        <mat-spinner mode="indeterminate" diameter="20"></mat-spinner>
+                    </ng-template>
+        </button>
+        <button style="margin-right: 20px;" [disabled]="!nextPageUrl" class="pagination-item" (click)="goToNextPage()">
+            <span *ngIf="!nextLoading; else nextLoader">
+                Next ></span>
+            <ng-template #nextLoader>
+                <mat-spinner mode="indeterminate" diameter="20"></mat-spinner>
+            </ng-template>
+        </button>
+    </div>
+</div>
+<!-- If no item is found with the searched text -->
+<ng-template #noItem>
+    <div class="no-item">No Item Found!</div>
+</ng-template>

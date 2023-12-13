@@ -1,0 +1,66 @@
+<div class="detail-container" *ngIf="selectedCard">
+    <div class="detail-img">
+        <img [src]="selectedCard.imageUrl" alt="">
+    </div>
+    <p class="detail-title">{{ selectedCard.name }}</p>
+    <div class="types-container">
+        <div class="each-type" *ngFor="let item of selectedCard.types">{{ item }}</div>
+    </div>
+    <!-- List of abilities for the pokemon -->
+    <div class="abilities">
+        <p class="detail-subtitle">abilities</p>
+        <div class="abilities-wrapper">
+            <div class="each-ability box-style" *ngFor="let item of selectedCard.abilities">{{ item }}</div>
+        </div>
+    </div>
+
+    <!-- List of details like height, weight, exp for the selected pokemon -->
+    <div class="details">
+        <div class="detail-row">
+            <div class="detail-entry">
+                <p class="detail-subtitle">height</p>
+                <div class="detail-val box-style">{{ selectedCard.height }}</div>
+            </div>
+            <div class="detail-entry">
+                <p class="detail-subtitle">Weight</p>
+                <div class="detail-val box-style">{{ selectedCard.weight }}</div>
+            </div>
+        </div>
+        <div class="detail-row">
+            <div class="detail-entry">
+                <p class="detail-subtitle">Order</p>
+                <div class="detail-val box-style">{{ selectedCard.order }}</div>
+            </div>
+            <div class="detail-entry">
+                <p class="detail-subtitle">Base Exp</p>
+                <div class="detail-val box-style">{{ selectedCard.base_exp }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List of status for the pokemon -->
+    <div class="stats-container">
+        <p class="detail-subtitle">Stats</p>
+        <div class="stat-wrapper">
+            <div class="each-stat" *ngFor="let item of selectedCard.stats; index as i">
+                <div style="color: white;" [ngStyle]="{'background-color': colors[i]}" class="stat-title">
+                    {{ getCorrespondingStat(item.name) }}
+                </div>
+                <div class="stat-val">{{ item.value }}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- List of evolution details for the pokemon -->
+    <div class="evo-container" *ngIf="selectedCard.evolutions && selectedCard.evolutions.length > 0">
+        <div class="detail-subtitle">Evolutions</div>
+        <div class="evo-wrapper">
+            <div class="each-evo" *ngFor="let item of selectedCard.evolutions">
+                <div class="evo-img">
+                    <img [src]="item.imageUrl" alt="">
+                </div>
+                <div class="evo-name">{{ item.name }}</div>
+            </div>
+        </div>
+    </div>
+</div>

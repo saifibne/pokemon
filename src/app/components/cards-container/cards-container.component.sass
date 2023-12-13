@@ -1,0 +1,49 @@
+.cards-container
+    display: flex
+    flex-wrap: wrap
+    justify-content: center
+
+.pagination
+    display: flex
+    align-items: center
+    justify-content: flex-end
+    margin-bottom: 20px
+    .pagination-item
+        padding: 8px 12px
+        border: 1px solid #c6c6c6
+        border-radius: 6px
+        margin: 8px
+        cursor: pointer
+        background-color: #dddddd
+        font-weight: 500
+        height: 36px
+        width: 80px
+
+.searchbox
+    display: flex
+    justify-content: center
+    position: relative
+    margin-top: 10px
+    & > input
+        width: 90%
+        height: 50px
+        border: 1px solid #c6c6c6
+        border-radius: 10px
+        padding: 8px 14px
+        box-shadow: inset 2px 4px 12px 4px rgba(0, 0, 0, 0.05)
+    .search-icon
+        padding: 10px
+        position: absolute
+        right: 6%
+        top: 50%
+        transform: translateY(-50%)
+        cursor: pointer
+
+.no-item
+    height: 80vh
+    font-size: 30px
+    font-weight: bold
+    text-transform: uppercase
+    display: flex
+    align-items: center
+    justify-content: center

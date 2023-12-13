@@ -1,0 +1,8 @@
+<div [ngStyle]="{'border': isCardActive() ? '2px solid #0086ff' : ''}" class="card" (click)="selectCard()"
+    *ngIf="pokeData">
+    <img class="poke-img" [src]="pokeData.imageUrl" alt="">
+    <p class="poke-name">{{ pokeData.name }}</p>
+    <div class="types-container" *ngIf="pokeData">
+        <div class="type-name" *ngFor="let type of pokeData.types">{{ type }}</div>
+    </div>
+</div>
